@@ -13,7 +13,8 @@
   },
   "permissions": [
     "storage",
-    "downloads"
+    "downloads",
+    "search"
   ],
   "host_permissions": [
     "https://api.jikan.moe/*",

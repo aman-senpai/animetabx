@@ -26,7 +26,6 @@ export class App {
     this.initializeEventListeners();
     this.initClock();
     this.updateNSFWToggleState();
-    this.initializeSearch();
     this.initializeNewsSource();
     this.initializeNews();
     this.initializeNewsToggle();
@@ -36,6 +35,14 @@ export class App {
     this.downloadBtn.addEventListener('click', () => this.handleDownload());
     this.shuffleBtn.addEventListener('click', () => this.initWallpaper(true));
     this.nsfwToggle.addEventListener('click', () => this.toggleNSFW());
+    this.searchInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        const query = this.searchInput.value.trim();
+        if (query) {
+          chrome.search.query({ text: query });
+        }
+      }
+    });
   }
 
   initializeSearch() {

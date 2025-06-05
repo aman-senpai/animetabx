@@ -1,26 +1,26 @@
 import { copyFileSync, mkdirSync, readdirSync, unlinkSync, existsSync } from 'fs';
 import { join } from 'path';
 
-// Create dist directory if it doesn't exist
-mkdirSync('dist', { recursive: true });
+// Create animetabx directory if it doesn't exist
+mkdirSync('animetabx', { recursive: true });
 
-// Copy only necessary files to dist
-copyFileSync('manifest.json', 'dist/manifest.json');
-copyFileSync('background.js', 'dist/background.js');
+// Copy manifest and background files
+copyFileSync('manifest.json', 'animetabx/manifest.json');
+copyFileSync('background.js', 'animetabx/background.js');
 
 // Ensure icons directory exists
-mkdirSync('dist/icons', { recursive: true });
+mkdirSync('animetabx/icons', { recursive: true });
 
 // Copy all icons from icons directory
 const icons = readdirSync('icons');
 icons.forEach(icon => {
-  copyFileSync(join('icons', icon), join('dist/icons', icon));
+  copyFileSync(join('icons', icon), join('animetabx/icons', icon));
 });
 
-// Clean up any duplicate files in dist root
-const distFiles = readdirSync('dist');
-distFiles.forEach(file => {
-  const filePath = join('dist', file);
+// Clean up any duplicate files in animetabx root
+const animetabxFiles = readdirSync('animetabx');
+animetabxFiles.forEach(file => {
+  const filePath = join('animetabx', file);
   // Remove any PNG files from root that are not icon-*.png
   if (file.endsWith('.png') && !file.startsWith('icon-')) {
     try {

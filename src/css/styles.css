@@ -1,0 +1,934 @@
+/* Custom styles */
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: .5;
+    }
+}
+
+.animate-spin {
+    animation: spin 1s linear infinite;
+}
+
+.animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.7);
+}
+
+/* Custom transitions */
+.transition-all {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+}
+
+/* Custom hover effects */
+.hover\:scale-110:hover {
+    transform: scale(1.1);
+}
+
+.hover\:scale-\[1\.01\]:hover {
+    transform: scale(1.01);
+}
+
+/* Custom backdrop blur */
+.backdrop-blur-sm {
+    backdrop-filter: blur(4px);
+}
+
+.backdrop-blur-md {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+/* Custom opacity */
+.opacity-0 {
+    opacity: 0;
+}
+
+.opacity-100 {
+    opacity: 1;
+}
+
+/* Custom line clamp */
+.line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Base styles */
+:root {
+    --text-color: #ffffff;
+    --text-color-secondary: rgba(255, 255, 255, 0.9);
+    --text-color-muted: rgba(255, 255, 255, 0.8);
+    --bg-color: #000000;
+    --accent-color: #ffffff;
+    --card-bg: rgba(17, 24, 39, 0.65);
+    --hover-bg: rgba(255, 255, 255, 0.15);
+    --border-color: rgba(255, 255, 255, 0.1);
+    --shadow-color: rgba(0, 0, 0, 0.4);
+    --glass-gradient: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    /* Enhanced text shadows for better visibility */
+    --text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7); /* Increased blur and spread */
+    --text-shadow-strong: 0 2px 6px rgba(0, 0, 0, 0.9); /* More pronounced */
+    --text-outline: 0 0 1px rgba(0, 0, 0, 0.5), 0 0 2px rgba(0, 0, 0, 0.3); /* Subtle outline */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+}
+
+/* Wallpaper section */
+#wallpaper-image {
+    transition: opacity 0.5s ease-in-out;
+}
+
+#wallpaper-image.hidden {
+    opacity: 0;
+}
+
+/* Base button styles */
+button {
+    outline: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+}
+
+button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.4);
+}
+
+/* Common hover effect for all buttons */
+button:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 12px -1px rgba(0, 0, 0, 0.5);
+    background-color: rgba(17, 24, 39, 0.85);
+}
+
+/* Action buttons (Download and Shuffle) */
+#download-btn,
+#shuffle-btn {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+    padding: 0.5rem;
+    border-radius: 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#download-btn:hover,
+#shuffle-btn:hover {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.15));
+    border-color: rgba(255, 255, 255, 0.35);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 12px -1px rgba(0, 0, 0, 0.5);
+}
+
+#download-btn svg,
+#shuffle-btn svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: var(--text-color);
+    filter: drop-shadow(var(--text-shadow));
+}
+
+/* Search engine buttons */
+.search-engine-btn {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.search-engine-btn.active {
+    background: rgba(17, 24, 39, 0.85);
+    border-color: rgba(255, 255, 255, 0.35);
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.search-engine-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* NSFW Toggle */
+#nsfw-toggle {
+    background: rgba(17, 24, 39, 0.75);
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    letter-spacing: 0.025em;
+    text-transform: uppercase;
+}
+
+#nsfw-toggle.active {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.25), rgba(239, 68, 68, 0.15));
+    border-color: rgba(239, 68, 68, 0.4);
+}
+
+#nsfw-toggle:not(.active) {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.25), rgba(34, 197, 94, 0.15));
+    border-color: rgba(34, 197, 94, 0.4);
+}
+
+/* News source buttons */
+.news-source-btn {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    padding: 0.375rem;
+    border-radius: 0.375rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.news-source-btn:hover {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.15));
+    border-color: rgba(255, 255, 255, 0.35);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 12px -1px rgba(0, 0, 0, 0.5);
+}
+
+.news-source-btn.active {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.15));
+    border-color: rgba(255, 255, 255, 0.35);
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+/* News toggle button */
+#news-toggle {
+    background: transparent;
+    padding: 0.5rem;
+    border-radius: 0.75rem;
+    border: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#news-toggle:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+#news-toggle svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: var(--text-color);
+    filter: drop-shadow(var(--text-shadow));
+    transition: all 0.3s ease;
+    opacity: 0.9;
+}
+
+#news-toggle:hover svg {
+    opacity: 1;
+}
+
+/* News section */
+#news-container {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.08));
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow:
+        0 4px 12px -1px rgba(0, 0, 0, 0.2),
+        0 2px 6px -1px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 400px;
+    min-width: 400px;
+    max-width: 400px;
+}
+
+/* Custom scrollbar styles for webkit browsers */
+#news-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+#news-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#news-container::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+}
+
+#news-container::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* News items */
+.news-item {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.08));
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow:
+        0 4px 12px -1px rgba(0, 0, 0, 0.2),
+        0 2px 6px -1px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    padding: 1rem;
+    border-radius: 12px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-bottom: 0.75rem;
+    width: 100%;
+    max-width: 100%;
+}
+
+.news-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.news-item:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow:
+        0 8px 16px -1px rgba(0, 0, 0, 0.25),
+        0 4px 8px -1px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+}
+
+.news-item:hover::before {
+    opacity: 1;
+}
+
+.news-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    line-height: 1.3;
+    padding: 0;
+    color: var(--text-color);
+    text-shadow: var(--text-shadow-strong), var(--text-outline); /* Apply stronger shadow and outline */
+}
+
+.news-title a {
+    color: var(--text-color);
+    text-shadow: var(--text-shadow-strong), var(--text-outline); /* Apply stronger shadow and outline */
+    display: block;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.news-title a:hover {
+    color: rgba(0, 0, 0, 0.9); /* Keep original hover behavior for light theme */
+    text-shadow: none; /* Remove text shadow on hover for clarity */
+}
+
+[data-theme="dark"] .news-title a:hover {
+    color: rgba(255, 255, 255, 0.95); /* Slightly brighter hover color */
+    text-shadow: none; /* Remove text shadow on hover for clarity */
+}
+
+.news-description {
+    font-size: 0.75rem;
+    line-height: 1.4;
+    color: var(--text-color-secondary);
+    margin-bottom: 0.25rem;
+    padding: 0;
+    font-weight: 400;
+    text-shadow: var(--text-shadow), var(--text-outline); /* Apply stronger shadow and outline */
+}
+
+.news-item .text-gray-400 {
+    color: rgba(0, 0, 0, 0.8); /* Darker for better contrast in light theme */
+    text-shadow: none;
+}
+
+[data-theme="dark"] .news-item .text-gray-400 {
+    color: rgba(255, 255, 255, 0.85); /* Slightly brighter for better contrast in dark theme */
+    text-shadow: var(--text-shadow); /* Re-apply text shadow for dark theme */
+}
+
+/* Clock styles */
+.clock-container {
+    background: var(--glass-gradient);
+    backdrop-filter: blur(18px); /* Increased blur */
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid var(--border-color);
+    box-shadow:
+        0 4px 8px -1px var(--shadow-color), /* Stronger shadow */
+        0 2px 5px -1px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15); /* Slightly brighter inset shadow */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-shadow: var(--text-shadow);
+}
+
+.clock-container:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.25); /* Stronger hover border */
+    box-shadow:
+        0 10px 15px -1px var(--shadow-color), /* Stronger hover shadow */
+        0 5px 8px -1px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2); /* Stronger hover inset shadow */
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1)); /* Slightly more opaque gradient */
+}
+
+.clock-time {
+    color: var(--text-color);
+    font-size: 2.75rem; /* Slightly larger font size */
+    font-weight: 800; /* Bolder font weight */
+    text-shadow: var(--text-shadow-strong), 0 0 3px rgba(0, 0, 0, 0.8), 0 0 5px rgba(0, 0, 0, 0.6); /* More pronounced shadow and added blur */
+    letter-spacing: 0.12em; /* Slightly increased letter spacing */
+    filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.7)); /* Stronger drop shadow for overall text */
+}
+
+.clock-date {
+    color: var(--text-color);
+    font-size: 1.05rem; /* Slightly larger font size */
+    font-weight: 700;
+    letter-spacing: 0.06em; /* Slightly increased letter spacing */
+    background: rgba(0, 0, 0, 0.5); /* More opaque background */
+    padding: 0.3rem 0.85rem; /* Slightly more padding */
+    border-radius: 9999px;
+    display: inline-block;
+    margin-top: 0.6rem; /* Slightly more margin */
+    text-shadow: var(--text-shadow); /* Ensure shadow is applied */
+}
+
+/* Utility classes */
+.hidden {
+    display: none;
+}
+
+/* Ensure proper stacking context */
+.relative {
+    position: relative;
+    z-index: 1;
+}
+
+.fixed {
+    position: fixed;
+    z-index: 2;
+}
+
+/* Ensure proper image display */
+.wallpaper {
+    @apply w-full h-full object-cover;
+}
+
+/* Ensure proper text contrast */
+.text-gray-400 {
+    color: rgba(156, 163, 175, 1);
+}
+
+/* Search Bar Styles */
+.search-container {
+    background: var(--glass-gradient);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 8px -1px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-shadow: var(--text-shadow);
+    width: 500px; /* Reduced from 600px */
+}
+
+.search-container:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.25); /* Stronger hover border */
+    box-shadow: 0 10px 15px -1px var(--shadow-color), 0 5px 8px -1px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2); /* Stronger hover shadows */
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1)); /* Slightly more opaque gradient */
+}
+
+.search-engines {
+    padding-left: 0.75rem;
+    border-left: 1px solid rgba(255, 255, 255, 0.25); /* Slightly stronger border */
+}
+
+.search-container input {
+    background: transparent;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding: 0.5rem 0;
+    width: 100%;
+    transition: all 0.3s ease;
+    text-shadow: var(--text-shadow-strong), var(--text-outline);
+    outline: none; /* Remove default outline */
+}
+
+.search-container input:focus {
+    outline: none; /* Ensure no outline on focus */
+    box-shadow: none; /* Remove any box shadow */
+}
+
+.search-container input::placeholder {
+    color: var(--text-color-muted);
+    transition: all 0.3s ease;
+    text-shadow: var(--text-shadow);
+}
+
+/* Update the underline animation for focus state */
+.search-container input:focus + div {
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.5), transparent);
+    height: 1px;
+    transition: all 0.3s ease;
+}
+
+#search-btn {
+    transition: all 0.2s ease;
+}
+
+#search-btn:hover {
+    transform: scale(1.1);
+    background-color: rgba(255, 255, 255, 0.15); /* Slightly more opaque hover background */
+}
+
+/* News Container */
+.news-container {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    height: 400px;
+    overflow-y: auto;
+    padding: 0.5rem;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+.news-container > div:first-child {
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    border-radius: 0.375rem;
+}
+
+.news-container > div:first-child:hover {
+    background-color: rgba(255, 255, 255, 0.15); /* More opaque hover background */
+}
+
+.news-container > div:first-child h2 {
+    font-size: 0.95rem; /* Slightly larger font size */
+    font-weight: 700; /* Bolder font weight */
+    text-align: center;
+    color: var(--text-color);
+    text-shadow: var(--text-shadow-strong), var(--text-outline); /* Stronger shadow and outline */
+    margin: 0;
+    padding: 0;
+}
+
+.news-container.expanded {
+    transform: translateY(0);
+    opacity: 1;
+    height: 500px; /* Fixed height when expanded */
+}
+
+.news-container.collapsed {
+    transform: translateY(calc(100% - 2.5rem));
+    opacity: 0.95;
+    height: auto; /* Auto height when collapsed */
+}
+
+.news-container.collapsed:hover {
+    opacity: 1;
+}
+
+#news-toggle svg {
+    width: 1.1rem;
+    height: 1.1rem;
+    color: var(--text-color);
+    transition: all 0.3s ease;
+    opacity: 0.9; /* Slightly more opaque */
+    filter: drop-shadow(var(--text-shadow)); /* Apply text shadow to SVG icons */
+}
+
+#news-toggle:hover svg {
+    color: rgba(255, 255, 255, 0.95); /* Slightly brighter hover color */
+    opacity: 1;
+}
+
+#news-content {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 1;
+    transform: translateY(0);
+    padding: 0.5rem;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.08));
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 0.75rem;
+    margin-top: 0.5rem;
+}
+
+#news-content.hidden {
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+}
+
+/* News Source Selector */
+.news-sources {
+    padding-top: 0.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 0.5rem;
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.news-source-btn {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.08));
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.news-source-btn:hover {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.15));
+    border-color: rgba(255, 255, 255, 0.35);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 12px -1px rgba(0, 0, 0, 0.5);
+}
+
+.news-source-btn.active {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.15));
+    border-color: rgba(255, 255, 255, 0.35);
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+/* Hide news toggle icon when expanded */
+.news-container.expanded #news-toggle {
+    display: none;
+}
+
+/* Enhanced glassmorphism styles */
+/* This section was previously redundant due to direct styling. */
+/* Removing it to simplify and rely on specific element styles. */
+/* Keeping it commented for reference if a global glassmorphism class is desired later. */
+/*
+.clock-container,
+.search-container,
+.news-container,
+#download-btn,
+#shuffle-btn,
+#nsfw-toggle,
+.news-item {
+    background: var(--glass-gradient);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid var(--border-color);
+    box-shadow:
+        0 4px 8px -1px var(--shadow-color),
+        0 2px 5px -1px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.clock-container:hover,
+.search-container:hover,
+.news-container:hover,
+#download-btn:hover,
+#shuffle-btn:hover,
+#nsfw-toggle:hover,
+.news-item:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.25);
+    box-shadow:
+        0 10px 15px -1px var(--shadow-color),
+        0 5px 8px -1px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+}
+*/
+
+/* Enhanced text styles */
+.news-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    line-height: 1.3;
+    padding: 0;
+    color: var(--text-color);
+    text-shadow: var(--text-shadow-strong), var(--text-outline); /* Stronger shadow and outline */
+}
+
+.news-title a {
+    color: var(--text-color);
+    text-shadow: var(--text-shadow-strong), var(--text-outline); /* Stronger shadow and outline */
+    display: block;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.news-title a:hover {
+    color: rgba(0, 0, 0, 0.9); /* Keep original hover behavior for light theme */
+    text-shadow: none;
+}
+
+[data-theme="dark"] .news-title a:hover {
+    color: rgba(255, 255, 255, 0.95); /* Slightly brighter hover color */
+    text-shadow: none;
+}
+
+.news-description {
+    font-size: 0.75rem;
+    line-height: 1.4;
+    color: var(--text-color-secondary);
+    margin-bottom: 0.25rem;
+    padding: 0;
+    font-weight: 400;
+    text-shadow: var(--text-shadow), var(--text-outline); /* Stronger shadow and outline */
+}
+
+.clock-time {
+    color: var(--text-color);
+    font-size: 2.75rem;
+    font-weight: 800;
+    text-shadow: var(--text-shadow-strong), 0 0 3px rgba(0, 0, 0, 0.8), 0 0 5px rgba(0, 0, 0, 0.6); /* More pronounced shadow and added blur */
+    letter-spacing: 0.12em;
+    filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.7));
+}
+
+.clock-date {
+    color: var(--text-color);
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    background: rgba(0, 0, 0, 0.5); /* More opaque background */
+    padding: 0.3rem 0.85rem;
+    border-radius: 9999px;
+    display: inline-block;
+    margin-top: 0.6rem;
+    text-shadow: var(--text-shadow);
+}
+
+/* Search input enhancement */
+.search-container input {
+    background: transparent;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding: 0.5rem 0;
+    width: 100%;
+    transition: all 0.3s ease;
+    text-shadow: var(--text-shadow-strong), var(--text-outline); /* Stronger shadow and outline */
+}
+
+.search-container input::placeholder {
+    color: var(--text-color-muted);
+    transition: all 0.3s ease;
+    text-shadow: var(--text-shadow);
+}
+
+/* NSFW Toggle text enhancement */
+#nsfw-toggle {
+    color: var(--text-color);
+    font-weight: 600;
+    text-shadow: var(--text-shadow-strong), var(--text-outline); /* Stronger shadow and outline */
+}
+
+#nsfw-toggle.active {
+    color: var(--text-color);
+    text-shadow: var(--text-shadow-strong), 0 0 2px rgba(0, 0, 0, 0.8); /* Even stronger shadow for active state */
+}
+
+#nsfw-toggle:not(.active) {
+    color: var(--text-color);
+    text-shadow: var(--text-shadow-strong), var(--text-outline); /* Stronger shadow and outline */
+}
+
+/* News container text enhancement */
+.news-container > div:first-child h2 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-align: center;
+    color: var(--text-color);
+    text-shadow: var(--text-shadow-strong), var(--text-outline); /* Stronger shadow and outline */
+    margin: 0;
+    padding: 0;
+}
+
+/* News source buttons text enhancement */
+.news-source-btn {
+    color: var(--text-color-secondary);
+    text-shadow: var(--text-shadow);
+}
+
+.news-source-btn:hover {
+    color: var(--text-color);
+    text-shadow: var(--text-shadow-strong), var(--text-outline); /* Stronger hover shadow and outline */
+}
+
+.news-source-btn.active {
+    color: var(--text-color);
+    text-shadow: var(--text-shadow-strong), var(--text-outline); /* Stronger active shadow and outline */
+}
+
+/* Add text shadow to all glass containers */
+.clock-container,
+.search-container,
+.news-container,
+#download-btn,
+#shuffle-btn,
+#nsfw-toggle,
+.news-item {
+    text-shadow: var(--text-shadow);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .search-container {
+        width: 90vw !important;
+        max-width: 500px; /* Reduced from 600px */
+        padding: 0.75rem !important;
+    }
+
+    .search-engines {
+        gap: 0.5rem !important;
+    }
+
+    .search-engine-btn {
+        padding: 0.375rem !important;
+    }
+
+    .search-engine-btn img {
+        width: 1.25rem !important;
+        height: 1.25rem !important;
+    }
+
+    .clock-container {
+        padding: 0.75rem 1.5rem !important;
+    }
+
+    .clock-time {
+        font-size: 1.75rem !important;
+    }
+
+    .clock-date {
+        font-size: 0.875rem !important;
+    }
+
+    #nsfw-toggle {
+        padding: 0.375rem 0.75rem !important;
+        font-size: 0.875rem !important;
+    }
+
+    #download-btn,
+    #shuffle-btn {
+        padding: 0.375rem !important;
+    }
+
+    #download-btn svg,
+    #shuffle-btn svg {
+        width: 1rem !important;
+        height: 1rem !important;
+    }
+
+    .news-container {
+        width: 90vw !important;
+        max-width: 400px;
+    }
+
+    .news-title {
+        font-size: 0.875rem !important;
+    }
+
+    .news-description {
+        font-size: 0.75rem !important;
+    }
+
+    .news-source-btn {
+        padding: 0.25rem !important;
+    }
+
+    .news-source-btn img {
+        width: 0.875rem !important;
+        height: 0.875rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .search-container {
+        width: 95vw !important;
+    }
+
+    .search-engines {
+        display: none !important;
+    }
+
+    .clock-container {
+        padding: 0.5rem 1rem !important;
+    }
+
+    .clock-time {
+        font-size: 1.5rem !important;
+    }
+
+    .news-container {
+        width: 95vw !important;
+    }
+}
+
+/* Ensure proper spacing on mobile */
+@media (max-width: 768px) {
+    .fixed.top-6 {
+        top: 1rem !important;
+    }
+
+    .fixed.bottom-6 {
+        bottom: 1rem !important;
+    }
+
+    .fixed.right-6 {
+        right: 1rem !important;
+    }
+
+    .fixed.left-6 {
+        left: 1rem !important;
+    }
+}

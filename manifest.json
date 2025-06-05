@@ -1,0 +1,39 @@
+{
+  "manifest_version": 3,
+  "name": "AnimeTabX",
+  "version": "1.1.0",
+  "description": "A beautiful new tab page with anime wallpapers and news",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "permissions": [
+    "storage",
+    "downloads"
+  ],
+  "host_permissions": [
+    "https://api.jikan.moe/*",
+    "https://www.animenewsnetwork.com/*",
+    "https://api.waifu.im/*",
+    "https://api.nekos.best/*",
+    "https://corsproxy.io/*",
+    "https://s3.nyeki.dev/*",
+    "https://hacker-news.firebaseio.com/*",
+    "https://api.allorigins.win/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
+  "minimum_chrome_version": "88",
+  "author": "Aman Senpai",
+  "homepage_url": "https://github.com/aman-senpai/animetabx",
+  "update_url": "https://clients2.google.com/service/update2/crx"
+} 
